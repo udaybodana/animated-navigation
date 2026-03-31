@@ -18,3 +18,56 @@ body {
 .hero-content { text-align: center; }
 .hero-content h1 { font-size: 4rem; font-weight: 900; letter-spacing: -2px; margin-bottom: 10px; opacity: 0.1; }
 .hero-content p { color: #64748b; font-size: 1.1rem; }
+
+.hamburger {
+    position: fixed;
+    top: 40px;
+    right: 40px;
+    width: 60px;
+    height: 60px;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    transition: 0.3s;
+}
+
+.hamburger span {
+    width: 24px;
+    height: 2px;
+    background: white;
+    border-radius: 2px;
+    transition: 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
+
+
+#navCheck:checked ~ .hamburger span:nth-child(1) { transform: translateY(8px) rotate(45deg); background: #3b82f6; }
+#navCheck:checked ~ .hamburger span:nth-child(2) { opacity: 0; transform: scale(0); }
+#navCheck:checked ~ .hamburger span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); background: #3b82f6; }
+
+.hamburger:hover { transform: scale(1.1); background: rgba(255,255,255,0.1); }
+
+
+.nav-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(2, 6, 23, 0.85);
+    backdrop-filter: blur(25px);
+    z-index: 90;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 15%;
+    clip-path: circle(0% at 95% 5%);
+    transition: 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+#navCheck:checked ~ .nav-overlay { clip-path: circle(150% at 95% 5%); }
